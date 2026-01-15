@@ -1,0 +1,608 @@
+/* ==================== Variables CSS ==================== */
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #64748b;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --info-color: #06b6d4;
+    
+    --status-pending: #fbbf24;
+    --status-reading: #3b82f6;
+    --status-finished: #10b981;
+    
+    --bg-light: #f8fafc;
+    --bg-white: #ffffff;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --border-color: #e2e8f0;
+    
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    
+    --radius: 0.5rem;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==================== Reset y Base ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: var(--text-dark);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==================== Containers ==================== */
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.app-container {
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* ==================== Auth Section ==================== */
+.auth-card {
+    background: var(--bg-white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    padding: 40px 30px;
+    max-width: 400px;
+    width: 100%;
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-card h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.auth-card .subtitle {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+/* Tabs de Autenticación */
+.auth-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.tab-button {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-light);
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.tab-button:hover {
+    color: var(--primary-color);
+}
+
+.tab-button.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ==================== Forms ==================== */
+.auth-form,
+.book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-row .button-group {
+    display: flex;
+    align-items: flex-end;
+}
+
+.form-row .button-group .btn {
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group input::placeholder {
+    color: var(--text-light);
+}
+
+/* ==================== Buttons ==================== */
+.btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    text-align: center;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #475569;
+}
+
+.btn-success {
+    background: var(--success-color);
+    color: white;
+}
+
+.btn-success:hover {
+    background: #059669;
+}
+
+.btn-delete {
+    background: var(--danger-color);
+    color: white;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+}
+
+.btn-delete:hover {
+    background: #dc2626;
+}
+
+/* ==================== App Header ==================== */
+.app-header {
+    background: var(--bg-white);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.app-header h1 {
+    font-size: 2rem;
+    color: var(--text-dark);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-info span {
+    color: var(--text-light);
+}
+
+.user-info strong {
+    color: var(--primary-color);
+}
+
+/* ==================== Add Book Section ==================== */
+.add-book-section {
+    background: var(--bg-white);
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow);
+}
+
+.add-book-section h2 {
+    margin-bottom: 20px;
+    color: var(--text-dark);
+    font-size: 1.3rem;
+}
+
+.book-form {
+    gap: 15px;
+}
+
+/* ==================== Books Section ==================== */
+.books-section {
+    background: var(--bg-white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.section-header h2 {
+    color: var(--text-dark);
+    font-size: 1.3rem;
+}
+
+.book-stats {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    padding: 8px 16px;
+    background: var(--bg-light);
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.stat strong {
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+.pending-count strong {
+    color: #f59e0b;
+}
+
+.reading-count strong {
+    color: #3b82f6;
+}
+
+.finished-count strong {
+    color: #10b981;
+}
+
+/* ==================== Books List ==================== */
+.books-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.empty-message {
+    text-align: center;
+    color: var(--text-light);
+    padding: 40px 20px;
+    font-size: 1rem;
+}
+
+.status-section {
+    border-radius: 8px;
+    padding: 15px;
+    background: var(--bg-light);
+}
+
+.status-section h3 {
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.status-pendiente h3 {
+    color: var(--status-pending);
+}
+
+.status-leyendo h3 {
+    color: var(--status-reading);
+}
+
+.status-finalizado h3 {
+    color: var(--status-finished);
+}
+
+.books-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+/* ==================== Book Card ==================== */
+.book-card {
+    background: var(--bg-white);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.book-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.status-pendiente {
+    border-left-color: var(--status-pending);
+    border-left-width: 4px;
+}
+
+.status-leyendo {
+    border-left-color: var(--status-reading);
+    border-left-width: 4px;
+}
+
+.status-finalizado {
+    border-left-color: var(--status-finished);
+    border-left-width: 4px;
+}
+
+.book-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.book-title-section {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+}
+
+.status-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.book-titles {
+    flex: 1;
+}
+
+.book-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.book-author {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin: 0;
+    font-style: italic;
+}
+
+.book-details {
+    display: flex;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.due-date {
+    padding: 4px 8px;
+    background: var(--bg-light);
+    border-radius: var(--radius);
+}
+
+.book-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.status-select {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
+    min-width: 120px;
+}
+
+.status-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+/* ==================== Messages ==================== */
+.error-message {
+    display: none;
+    padding: 12px;
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* ==================== Responsive ==================== */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .auth-card {
+        padding: 30px 20px;
+    }
+
+    .app-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .app-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .user-info {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .book-stats {
+        width: 100%;
+    }
+
+    .books-group {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-card h1 {
+        font-size: 1.8rem;
+    }
+
+    .app-header h1 {
+        font-size: 1.3rem;
+    }
+
+    .book-actions {
+        flex-direction: column;
+    }
+
+    .status-select,
+    .btn {
+        width: 100%;
+    }
+
+    .add-book-section,
+    .books-section {
+        padding: 15px;
+    }
+}
