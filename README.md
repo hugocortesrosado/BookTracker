@@ -183,7 +183,7 @@ Este proyecto es de uso personal y educativo. No está permitida la reproducció
 Todos los derechos reservados © 2026
 
 ## 🛡️ Aviso Legal
-Este proyecto está bajo una licencia restrictiva. Consulta el archivo [LICENCE](./LICENCE) para más detalles. No se permite el uso comercial ni la redistribución.
+Este proyecto está bajo una licencia restrictiva. Consulta el archivo [LICENSE](./LICENSE) para más detalles. No se permite el uso comercial ni la redistribución.
 
 ## 👤 Autor
 
