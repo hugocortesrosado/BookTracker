@@ -176,9 +176,11 @@ fetch('/api/register.php', {
 .then(data => console.log(data));
 ```
 
-## 📝 Licencia
+## ⚖️ Licencia
 
-Este proyecto está bajo licencia MIT. Siéntete libre de usarlo y modificarlo.
+Este proyecto es de uso personal y educativo. No está permitida la reproducción, distribución o uso comercial del código sin autorización expresa del autor. 
+
+Todos los derechos reservados © 2026
 
 ## 👤 Autor
 
