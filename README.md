@@ -6,6 +6,7 @@ Un gestor personal de libros que te permite registrarte, iniciar sesión y admin
 
 - ✅ **Autenticación de usuarios**: Registro e inicio de sesión seguro
 - 📖 **Gestión de libros**: Crear, ver, actualizar y eliminar libros
+- 📄 **Seguimiento de páginas**: Registra el número total de páginas de cada libro
 - 📋 **Estados de lectura**: Marca tus libros como Pendiente, Leyendo o Finalizado
 - 📅 **Fechas de vencimiento**: Establecer fechas límite para tus lecturas
 - 🔒 **Datos seguros**: Contraseñas encriptadas en la base de datos
@@ -87,6 +88,7 @@ BookTracker/
 │   └── squema.sql         # Esquema de base de datos
 ├── .env                   # Variables de entorno (crear)
 └── README.md              # Este archivo
+└── LICENSE                # Términos de uso y licencia del proyecto
 ```
 
 ## 🚀 Uso
@@ -122,6 +124,7 @@ BookTracker/
 | user_id | INT | ID del usuario (FK) |
 | title | VARCHAR(255) | Título del libro |
 | author | VARCHAR(255) | Autor del libro |
+| pages  | INT| Páginas del libro |
 | due_date | DATE | Fecha de vencimiento |
 | status | ENUM | Pendiente/Leyendo/Finalizado |
 | created_at | TIMESTAMP | Fecha de creación |
@@ -176,14 +179,12 @@ fetch('/api/register.php', {
 .then(data => console.log(data));
 ```
 
-## ⚖️ Licencia
+## 🛡️ Aviso Legal
 
-Este proyecto es de uso personal y educativo. No está permitida la reproducción, distribución o uso comercial del código sin autorización expresa del autor. 
+Este proyecto está bajo una licencia restrictiva. Consulta el archivo [LICENSE](./LICENSE) para más detalles.
+No está permitida la reproducción, distribución o uso comercial del código sin autorización expresa del autor. 
 
 Todos los derechos reservados © 2026
-
-## 🛡️ Aviso Legal
-Este proyecto está bajo una licencia restrictiva. Consulta el archivo [LICENSE](./LICENSE) para más detalles. No se permite el uso comercial ni la redistribución.
 
 ## 👤 Autor
 
