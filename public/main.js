@@ -180,9 +180,9 @@ async function loadUserInfo() {
         const response = await fetch(API_ENDPOINTS.books);
         if (response.ok) {
             const data = await response.json();
-            // El nombre del usuario se guarda en la sesión, aquí simplemente lo mostramos
-            // Se puede obtener del navegador o de la API extendida
-            document.getElementById('user-name').textContent = currentUser?.email?.split('@')[0] || 'Usuario';
+            // Obtener el nombre del usuario desde la respuesta de la API
+            const userName = data.user_name || 'Usuario';
+            document.getElementById('user-name').textContent = userName;
         }
     } catch (error) {
         console.error('Error al cargar info del usuario:', error);
@@ -245,6 +245,7 @@ function displayBooks(books) {
 
             statusBooks.forEach(book => {
                 const formattedDate = book.due_date ? new Date(book.due_date).toLocaleDateString('es-ES') : 'Sin fecha';
+                const pagesText = book.pages ? `📖 ${book.pages} págs.` : 'Sin información de páginas';
                 const statusIcon = {
                     'Pendiente': '⏳',
                     'Leyendo': '📖',
@@ -263,6 +264,7 @@ function displayBooks(books) {
                             </div>
                         </div>
                         <div class="book-details">
+                            <span class="pages">${pagesText}</span>
                             <span class="due-date">📅 ${formattedDate}</span>
                         </div>
                         <div class="book-actions">
@@ -305,6 +307,7 @@ async function handleAddBook(e) {
 
     const title = document.getElementById('book-title').value;
     const author = document.getElementById('book-author').value;
+    const pages = document.getElementById('book-pages').value;
     const due_date = document.getElementById('book-due-date').value;
     const errorDiv = document.getElementById('add-book-error');
 
@@ -317,6 +320,7 @@ async function handleAddBook(e) {
             body: JSON.stringify({
                 title,
                 author,
+                pages: pages ? parseInt(pages) : null,
                 due_date: due_date || null
             })
         });

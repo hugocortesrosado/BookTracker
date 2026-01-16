@@ -16,14 +16,15 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
+$user_name = $_SESSION['user_name'] ?? 'Usuario';
 $method = $_SERVER['REQUEST_METHOD'];
 
 switch($method) {
     case 'GET': // Listar libros
-        $stmt = $pdo->prepare("SELECT id, user_id, title, author, due_date, status, created_at FROM books WHERE user_id = ? ORDER BY status ASC, due_date ASC");
+        $stmt = $pdo->prepare("SELECT id, user_id, title, author, pages, due_date, status, created_at FROM books WHERE user_id = ? ORDER BY status ASC, due_date ASC");
         $stmt->execute([$user_id]);
         $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode(["status" => "success", "data" => $books]);
+        echo json_encode(["status" => "success", "data" => $books, "user_name" => $user_name]);
         break;
 
     case 'POST': // Añadir libro
@@ -36,9 +37,10 @@ switch($method) {
         }
 
         $due_date = $data['due_date'] ?? null;
-        $stmt = $pdo->prepare("INSERT INTO books (user_id, title, author, due_date, status) VALUES (?, ?, ?, ?, 'Pendiente')");
+        $pages = isset($data['pages']) && !empty($data['pages']) ? intval($data['pages']) : null;
+        $stmt = $pdo->prepare("INSERT INTO books (user_id, title, author, pages, due_date, status) VALUES (?, ?, ?, ?, ?, 'Pendiente')");
         
-        if ($stmt->execute([$user_id, $data['title'], $data['author'], $due_date])) {
+        if ($stmt->execute([$user_id, $data['title'], $data['author'], $pages, $due_date])) {
             echo json_encode(["status" => "success", "message" => "Libro añadido correctamente"]);
         } else {
             http_response_code(500);

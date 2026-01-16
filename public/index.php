@@ -83,8 +83,12 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="book-due-date">Fecha de Finalización (Opcional)</label>
-                        <input type="date" id="book-due-date">
+                        <label for="book-pages">Número de Páginas</label>
+                        <input type="number" id="book-pages" placeholder="Ej: 350" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-due-date">Fecha de Finalización</label>
+                        <input type="date" id="book-due-date" required>
                     </div>
                     <div class="form-group button-group">
                         <button type="submit" class="btn btn-success">+ Añadir Libro</button>

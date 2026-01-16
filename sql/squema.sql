@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS books (
     user_id INT NOT NULL,
     title VARCHAR(255) NOT NULL,
     author VARCHAR(255) NOT NULL,
+    pages INT,
     due_date DATE,
     status ENUM('Pendiente', 'Leyendo', 'Finalizado') DEFAULT 'Pendiente',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
